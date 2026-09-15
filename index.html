@@ -39,7 +39,6 @@
     overflow:hidden;
     box-shadow:0 25px 50px -12px rgba(20,83,45,0.35);
   }
-  /* clip / hook at top */
   .clip{
     position:absolute;
     top:-14px;
@@ -52,7 +51,6 @@
     z-index:5;
     box-shadow:inset 0 -2px 3px rgba(0,0,0,0.25);
   }
-  /* angled header */
   .header{
     position:relative;
     height:230px;
@@ -95,7 +93,6 @@
     margin-top:4px;
     letter-spacing:1.5px;
   }
-  /* photo */
   .photo-wrap{
     position:relative;
     z-index:3;
@@ -138,7 +135,6 @@
   }
   .photo-placeholder svg{width:34px;height:34px;opacity:0.7;}
 
-  /* body */
   .body{
     padding:56px 28px 26px;
     text-align:center;
@@ -207,13 +203,13 @@
 
     <div class="header">
       <div class="org-name">GETEC SARL</div>
-      <div class="org-sub">INTERN</div>
+      <div class="org-sub">INTERNSHIP PROGRAM</div>
 
       <div class="photo-wrap">
         <div class="photo-frame">
           <!-- REPLACE PHOTO: put your photo file named "photo.jpg" in the
                same folder as this HTML file, and it will appear here automatically. -->
-          <img src="photo.jpg" alt="Photo" onerror="this.style.display='none'">
+          <img src="photo.jpg" alt="Photo" onerror="this.style.display='none'" onload="this.nextElementSibling.style.display='none'">
           <div class="photo-placeholder">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
               <circle cx="12" cy="8" r="4"/>
@@ -227,21 +223,21 @@
 
     <div class="body">
       <div class="name">AKOB CLIVE</div>
-      <div class="role">Telecom and Network Engineering</div>
+      <div class="role">INTERN</div>
 
       <div class="divider"></div>
 
       <div class="credentials">
         <div class="cred-row">
-          <span class="cred-label">Date de naissance</span>
-          <span class="cred-value">01 Juin 2006</span>
+          <span class="cred-label">Date of Birth</span>
+          <span class="cred-value">01 June 2006</span>
         </div>
         <div class="cred-row">
-          <span class="cred-label">École</span>
-          <span class="cred-value">Université de Buea</span>
+          <span class="cred-label">School</span>
+          <span class="cred-value">University of Buea</span>
         </div>
         <div class="cred-row">
-          <span class="cred-label">Durée</span>
+          <span class="cred-label">Internship Period</span>
           <span class="cred-value">Sep 03 – Dec 31</span>
         </div>
       </div>
