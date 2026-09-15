@@ -2,222 +2,252 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akob Clive — Internship ID</title>
+<title>GETEC SARL - ID Badge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0e1b2c;
-    --card-bg: #fbfaf7;
-    --ink: #16202b;
-    --muted: #5c6b7a;
-    --accent: #2fb6a3;
-    --accent-soft: rgba(47, 182, 163, 0.14);
-    --line: #e4e1d8;
+  :root{
+    --forest: #14532d;
+    --green-mid: #1e7a46;
+    --green-light: #3fa66b;
+    --mint: #dcefe2;
+    --ink: #17251d;
+    --label: #6b7d72;
+    --paper: #ffffff;
   }
-
-  * { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 32px 16px;
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:40px;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Inter',sans-serif;
     background:
-      radial-gradient(circle at 20% 20%, rgba(47,182,163,0.10), transparent 40%),
-      radial-gradient(circle at 80% 85%, rgba(47,182,163,0.08), transparent 45%),
-      var(--bg);
-    font-family: 'Segoe UI', Roboto, sans-serif;
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.15), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(220,239,226,0.35), transparent 45%),
+      linear-gradient(135deg, #0f3d24 0%, #1e7a46 45%, #3fa66b 75%, #7fd39c 100%);
+    background-attachment:fixed;
   }
-
-  .card {
-    width: 100%;
-    max-width: 360px;
-    background: var(--card-bg);
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
-    position: relative;
+  .badge{
+    position:relative;
+    width:340px;
+    height:560px;
+    background:var(--paper);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 25px 50px -12px rgba(20,83,45,0.35);
   }
-
-  .band {
-    background: var(--ink);
-    color: #fff;
-    padding: 16px 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  /* clip / hook at top */
+  .clip{
+    position:absolute;
+    top:-14px;
+    left:50%;
+    transform:translateX(-50%);
+    width:70px;
+    height:28px;
+    background:var(--forest);
+    border-radius:14px;
+    z-index:5;
+    box-shadow:inset 0 -2px 3px rgba(0,0,0,0.25);
   }
-
-  .band .org {
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.02em;
+  /* angled header */
+  .header{
+    position:relative;
+    height:230px;
+    background:var(--forest);
+    overflow:hidden;
   }
-
-  .band .role {
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
+  .header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--green-mid);
+    clip-path:polygon(0 0, 100% 0, 100% 55%, 0 78%);
   }
-
-  .body {
-    padding: 34px 28px 24px;
-    text-align: center;
+  .header::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--green-light);
+    opacity:0.55;
+    clip-path:polygon(0 0, 62% 0, 40% 40%, 0 30%);
   }
-
-  /* Photo — radar-ring frame, the one bold element on the card */
-  .photo-frame {
-    position: relative;
-    width: 132px;
-    height: 132px;
-    margin: 0 auto 20px;
+  .org-name{
+    position:relative;
+    z-index:2;
+    color:#ffffff;
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:26px;
+    letter-spacing:0.5px;
+    text-align:center;
+    padding-top:34px;
   }
-
-  .photo-frame::before,
-  .photo-frame::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 1px solid var(--accent);
-    opacity: 0.35;
+  .org-sub{
+    position:relative;
+    z-index:2;
+    color:var(--mint);
+    text-align:center;
+    font-size:12px;
+    font-weight:500;
+    margin-top:4px;
+    letter-spacing:1.5px;
   }
-
-  .photo-frame::before {
-    inset: -8px;
-    opacity: 0.2;
+  /* photo */
+  .photo-wrap{
+    position:relative;
+    z-index:3;
+    width:132px;
+    height:132px;
+    margin:14px auto 0;
+    border-radius:50%;
+    background:var(--paper);
+    padding:5px;
+    box-shadow:0 8px 18px rgba(0,0,0,0.25);
   }
-
-  .photo-frame::after {
-    inset: -16px;
-    opacity: 0.1;
+  .photo-frame{
+    position:relative;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    overflow:hidden;
+    background:var(--mint);
   }
-
-  .photo {
-    position: relative;
-    width: 132px;
-    height: 132px;
-    border-radius: 50%;
-    background: var(--accent-soft) center/cover no-repeat;
-    /* === INSERT PHOTO: set this background-image === */
-    background-image: url("profile.jpg");
-    border: 3px solid var(--card-bg);
-    outline: 2px solid var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent);
-    font-size: 13px;
-    font-family: 'Courier New', monospace;
+  .photo-frame img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
   }
-
-  .name {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--ink);
-    letter-spacing: 0.01em;
+  .photo-placeholder{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:var(--green-mid);
+    font-size:11px;
+    font-weight:600;
+    gap:4px;
+    text-align:center;
+    padding:0 10px;
   }
+  .photo-placeholder svg{width:34px;height:34px;opacity:0.7;}
 
-  .field-of-study {
-    margin-top: 4px;
-    font-size: 13px;
-    color: var(--muted);
+  /* body */
+  .body{
+    padding:56px 28px 26px;
+    text-align:center;
   }
-
-  .divider {
-    height: 1px;
-    background: var(--line);
-    margin: 24px 0 20px;
+  .name{
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:21px;
+    color:var(--ink);
+    letter-spacing:0.3px;
   }
-
-  .data {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  .role{
+    margin-top:4px;
+    display:inline-block;
+    color:var(--forest);
+    background:var(--mint);
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:0.5px;
+    padding:4px 14px;
+    border-radius:20px;
   }
-
-  .row {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    align-items: baseline;
+  .divider{
+    height:1px;
+    background:#e3e9e5;
+    margin:22px 0 18px;
   }
-
-  .label {
-    font-size: 12px;
-    color: var(--muted);
+  .credentials{
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
   }
-
-  .value {
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    color: var(--ink);
-    text-align: right;
+  .cred-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
   }
-
-  .footer {
-    margin-top: 26px;
-    padding-top: 16px;
-    border-top: 1px dashed var(--line);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .cred-label{
+    font-size:11.5px;
+    color:var(--label);
+    font-weight:500;
+    white-space:nowrap;
   }
-
-  .validity-label {
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: none;
+  .cred-value{
+    font-size:13px;
+    color:var(--ink);
+    font-weight:600;
+    text-align:right;
   }
-
-  .validity-dates {
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    color: var(--accent);
-    font-weight: 700;
+  .footer-bar{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height:8px;
+    background:linear-gradient(90deg,var(--forest),var(--green-light));
   }
 </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="band">
-      <div class="org">University of Buea</div>
-      <div class="role">Internship Identification</div>
+  <div class="badge">
+    <div class="clip"></div>
+
+    <div class="header">
+      <div class="org-name">GETEC SARL</div>
+      <div class="org-sub">INTERN</div>
+
+      <div class="photo-wrap">
+        <div class="photo-frame">
+          <!-- REPLACE PHOTO: put your photo file named "photo.jpg" in the
+               same folder as this HTML file, and it will appear here automatically. -->
+          <img src="photo.jpg" alt="Photo" onerror="this.style.display='none'">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
+            </svg>
+            Add Photo
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="body">
-      <div class="photo-frame">
-        <div class="photo"></div>
-      </div>
-
-      <div class="name">Akob Clive</div>
-      <div class="field-of-study">Telecommunications &amp; Networking Engineering</div>
+      <div class="name">AKOB CLIVE</div>
+      <div class="role">Telecom and Network Engineering</div>
 
       <div class="divider"></div>
 
-      <div class="data">
-        <div class="row">
-          <span class="label">Date of birth</span>
-          <span class="value">01/06/2006</span>
+      <div class="credentials">
+        <div class="cred-row">
+          <span class="cred-label">Date de naissance</span>
+          <span class="cred-value">01 Juin 2006</span>
         </div>
-        <div class="row">
-          <span class="label">School</span>
-          <span class="value">University of Buea</span>
+        <div class="cred-row">
+          <span class="cred-label">École</span>
+          <span class="cred-value">Université de Buea</span>
         </div>
-        <div class="row">
-          <span class="label">Internship organization</span>
-          <span class="value">GETEC SARL</span>
+        <div class="cred-row">
+          <span class="cred-label">Durée</span>
+          <span class="cred-value">Sep 03 – Dec 31</span>
         </div>
-      </div>
-
-      <div class="footer">
-        <span class="validity-label">Valid</span>
-        <span class="validity-dates">03 Sep – 31 Dec 2026</span>
       </div>
     </div>
+
+    <div class="footer-bar"></div>
   </div>
 
 </body>
