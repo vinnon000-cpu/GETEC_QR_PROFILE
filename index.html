@@ -1,96 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akob Clive — Internship ID</title>
+<style>
+  :root {
+    --bg: #0e1b2c;
+    --card-bg: #fbfaf7;
+    --ink: #16202b;
+    --muted: #5c6b7a;
+    --accent: #2fb6a3;
+    --accent-soft: rgba(47, 182, 163, 0.14);
+    --line: #e4e1d8;
+  }
 
-    <title>Akob Clive - Internship Profile</title>
+  * { box-sizing: border-box; }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            margin: 0;
-            padding: 30px;
-        }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(47,182,163,0.10), transparent 40%),
+      radial-gradient(circle at 80% 85%, rgba(47,182,163,0.08), transparent 45%),
+      var(--bg);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+  }
 
-        .profile {
-            max-width: 500px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+  .card {
+    width: 100%;
+    max-width: 360px;
+    background: var(--card-bg);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+    position: relative;
+  }
 
-        .profile img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
+  .band {
+    background: var(--ink);
+    color: #fff;
+    padding: 16px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
 
-        h1 {
-            margin-bottom: 5px;
-        }
+  .band .org {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
 
-        .info {
-            text-align: left;
-            margin-top: 25px;
-        }
+  .band .role {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+  }
 
-        .info p {
-            margin: 12px 0;
-        }
+  .body {
+    padding: 34px 28px 24px;
+    text-align: center;
+  }
 
-        .label {
-            font-weight: bold;
-        }
-    </style>
+  /* Photo — radar-ring frame, the one bold element on the card */
+  .photo-frame {
+    position: relative;
+    width: 132px;
+    height: 132px;
+    margin: 0 auto 20px;
+  }
+
+  .photo-frame::before,
+  .photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    opacity: 0.35;
+  }
+
+  .photo-frame::before {
+    inset: -8px;
+    opacity: 0.2;
+  }
+
+  .photo-frame::after {
+    inset: -16px;
+    opacity: 0.1;
+  }
+
+  .photo {
+    position: relative;
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    background: var(--accent-soft) center/cover no-repeat;
+    /* === INSERT PHOTO: set this background-image === */
+    background-image: url("profile.jpg");
+    border: 3px solid var(--card-bg);
+    outline: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+  }
+
+  .name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  .field-of-study {
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--line);
+    margin: 24px 0 20px;
+  }
+
+  .data {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .label {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .value {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  .footer {
+    margin-top: 26px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .validity-label {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: none;
+  }
+
+  .validity-dates {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+</style>
 </head>
-
 <body>
 
-    <div class="profile">
-
-        <!-- YOUR PHOTO GOES HERE -->
-        <img src="profile.jpg" alt="Akob Clive">
-
-        <h1>Akob Clive</h1>
-
-        <p>Internship Profile</p>
-
-        <div class="info">
-
-            <p>
-                <span class="label">Date of Birth:</span>
-                1 June 2006
-            </p>
-
-            <p>
-                <span class="label">School:</span>
-                University of Buea
-            </p>
-
-            <p>
-                <span class="label">Internship Organization:</span>
-                GETEC SARL
-            </p>
-
-            <p>
-                <span class="label">Internship Area:</span>
-                Study, Installation and Maintenance of Wireless Telecommunication Networks
-            </p>
-
-            <p>
-                <span class="label">Internship Period:</span>
-                3 September 2026 – 31 December 2026
-            </p>
-
-        </div>
-
+  <div class="card">
+    <div class="band">
+      <div class="org">University of Buea</div>
+      <div class="role">Internship Identification</div>
     </div>
+
+    <div class="body">
+      <div class="photo-frame">
+        <div class="photo"></div>
+      </div>
+
+      <div class="name">Akob Clive</div>
+      <div class="field-of-study">Telecommunications &amp; Networking Engineering</div>
+
+      <div class="divider"></div>
+
+      <div class="data">
+        <div class="row">
+          <span class="label">Date of birth</span>
+          <span class="value">01/06/2006</span>
+        </div>
+        <div class="row">
+          <span class="label">School</span>
+          <span class="value">University of Buea</span>
+        </div>
+        <div class="row">
+          <span class="label">Internship organization</span>
+          <span class="value">GETEC SARL</span>
+        </div>
+      </div>
+
+      <div class="footer">
+        <span class="validity-label">Valid</span>
+        <span class="validity-dates">03 Sep – 31 Dec 2026</span>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
